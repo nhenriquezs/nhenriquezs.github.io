@@ -117,15 +117,29 @@ nav {
 ************/
 #main-content {
 	background: white;
-	width: 90%;
-	max-width: 800px;
-	margin: 20px auto;
+	float: right;
+	width: 50%;
+	margin: 20px;
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
 
 	#main-content header,
 	#main-content .content {
-		padding: 40px;
+		padding: 30px;
+	}
+	
+#main-content2 {
+	background: white;
+	float: right;
+	position: fixed;
+	height: 75%;
+	width: 45%;
+	margin: 20px;
+	box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+	#main-content2 .content2 {
+		padding: 30px;
 	}
 	
 
@@ -137,6 +151,7 @@ nav {
 ************/
 #main-footer {
 	background: #333;
+	clear: both;
 	color: white;
 	text-align: center;
 	padding: 20px;
