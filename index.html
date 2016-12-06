@@ -3,9 +3,9 @@
 	<head>
 	    <meta charset="utf-8">
 	    <title>Visualizationssssss</title>
-	    <link rel="shortcut icon" type="img/image.png" href="favicon.png" />
+	    <link rel="shortcut icon" type="img/image/png" href="favicon.png" />
 	    <link rel="stylesheet" href="css/style.css">
-	    <script type="text/javascript" src="js/d3.js"></script>
+	    <script type="text/javascript" src="js/d3/d3v3.js"></script>
 	</head>
 
 	<body>
@@ -32,12 +32,17 @@
 		<div id="main-content">			
 			<img src="img/paisaje.jpg" alt="paisaje" />
 			
-			<div class="content">
+			<div id="chart" class="content">
 				<p>Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización.Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. </p>
 
-				<p>Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización.Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. </p>		
+				<p>Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización.Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. </p>
+				<br>
+				<br>		
 
-				<p>>>>>>>>>>Gráfico de prueba</p>		
+				<h1>Tasa de abstención por región.</h1>
+				<h1>  </h1>
+				<label><input type="checkbox">Ordenar gráfico</label>
+						
 
 				<style>
 					.bar {
@@ -47,75 +52,115 @@
 					.bar:hover {
 					  fill: brown;
 					}
-
-					.axis--x path {
-					  display: none;
-					}
-
 				</style>
-				<svg width="700" height="400"></svg>
+
 				
-				<script>
-					var svg = d3.select("svg"),
-					    margin = {top: 20, right: 20, bottom: 30, left: 40},
-					    width = +svg.attr("width") - margin.left - margin.right,
-					    height = +svg.attr("height") - margin.top - margin.bottom;
+				
+				<script type="text/javascript">
+					var margin = {top: 30, right: 20, bottom: 40, left: 50},
+						width = 700 - margin.left - margin.right,
+						height = 400 - margin.top - margin.bottom;
 
-					var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-					    y = d3.scaleLinear().rangeRound([height, 0]);
+					var formatPercent = d3.format(".4");
 
-					var g = svg.append("g")
-					    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+					var x = d3.scale.ordinal()
+						.rangeRoundBands([0, width], .1, 1);
 
-					d3.tsv("data/data.tsv", function(d) {
-					  d.frequency = +d.frequency;
-					  return d;
-					}, function(error, data) {
-					  if (error) throw error;
+					var y = d3.scale.linear()
+						.range([height, 0]);
 
-					  x.domain(data.map(function(d) { return d.letter; }));
-					  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+					var xAxis = d3.svg.axis()
+						.scale(x)
+						.orient("bottom");
 
-					  g.append("g")
-					      .attr("class", "axis axis--x")
-					      .attr("transform", "translate(0," + height + ")")
-					      .call(d3.axisBottom(x));
+					var yAxis = d3.svg.axis()
+						.scale(y)
+						.orient("left")
+						.tickFormat(formatPercent);
 
-					  g.append("g")
-					      .attr("class", "axis axis--y")
-					      .call(d3.axisLeft(y).ticks(10, "%"))
-					    .append("text")
-					      .attr("transform", "rotate(-90)")
-					      .attr("y", 6)
-					      .attr("dy", "0.71em")
-					      .attr("text-anchor", "end")
-					      .text("Frequency");
+					var svg = d3.select("#chart").append("svg")
+						.attr("width", width + margin.left + margin.right)
+						.attr("height", height + margin.top + margin.bottom)
+						.append("g")
+						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-					  g.selectAll(".bar")
-					    .data(data)
-					    .enter().append("rect")
-					      .attr("class", "bar")
-					      .attr("x", function(d) { return x(d.letter); })
-					      .attr("y", function(d) { return y(d.frequency); })
-					      .attr("width", x.bandwidth())
-					      .attr("height", function(d) { return height - y(d.frequency); });
+					d3.json("data/nac_abs.json", function(error, data) {
+						data.forEach(function(d) {
+						d.frequency = +d.frequency;
 					});
-				</script>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					x.domain(data.map(function(d) { return d.Región; }));
+					y.domain([0, d3.max(data, function(d) { return d.Abs; })]);
+
+					svg.append("g")
+						.attr("class", "x axis")
+						.attr("transform", "translate(0," + height + ")")
+						.call(xAxis)
+						.append("text")
+						// .attr("transform", "rotate(-90)")
+						.attr("y", 6)
+						.attr("dy", "1.5em")
+						.style("text-anchor", "end")
+						.text("Región");
+
+					svg.append("g")
+						.attr("class", "y axis")
+						.call(yAxis)
+						.append("text")
+						.attr("transform", "rotate(-90)")
+						.attr("y", 6)
+						.attr("dy", ".71em")
+						.style("text-anchor", "end")
+						.text("Tasa de abstención");
+
+					svg.selectAll(".bar")
+						.data(data)
+						.enter().append("rect")
+						.attr("class", "bar")
+						.attr("x", function(d) { return x(d.Región); })
+						.attr("width", x.rangeBand())
+						.attr("y", function(d) { return y(d.Abs); })
+						.attr("height", function(d) { return height - y(d.Abs); });
+
+					d3.select("input").on("change", change);
+					var sortTimeout = setTimeout(function() {
+					d3.select("input").property("checked", false).each(change);
+					}, 2000);
+
+					function change() {
+						clearTimeout(sortTimeout);
+					    // Copy-on-write since tweens are evaluated after a delay.
+						var x0 = x.domain(data.sort(this.checked
+							? function(a, b) { return b.Abs - a.Abs; }
+							: function(a, b) { return d3.ascending(a.Región, b.Región); })
+							.map(function(d) { return d.Región; }))
+							.copy();
+
+					    svg.selectAll(".bar")
+					        .sort(function(a, b) { return x0(a.Región) - x0(b.Región); });
+
+					    var transition = svg.transition().duration(750),
+					        delay = function(d, i) { return i * 50; };
+
+					    transition.selectAll(".bar")
+					        .delay(delay)
+					        .attr("x", function(d) { return x0(d.Región); });
+					    transition.select(".x.axis")
+							.call(xAxis)
+							.selectAll("g")
+							.delay(delay);
+					  }
+					});
+      			</script>
+      			<svg ></svg>
 				
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	
 			</div>
 		</div>
 
 
 		<div id="main-content2">
-			<img id="mapa" src="img/mapa.jpg" alt="mapa"/>
+			<img id="img/mapa" src="mapa.jpg" alt="mapa"/>
 			
 		</div>	<!-- / article -->
 
