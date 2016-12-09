@@ -19,7 +19,7 @@ d3.select("#chart2")
   return chart;
 });
 
-function updateDataI() {
+function updateData(data) {
 
     nv.addGraph(function() {
   var chart = nv.models.pieChart()
@@ -33,7 +33,7 @@ function updateDataI() {
       ;
 
 d3.select("#chart2")
-        .datum(dataI)
+        .datum(data)
         .transition().duration(350)
         .call(chart);
 

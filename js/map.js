@@ -49,13 +49,56 @@ var height = 530;
                   .attr('class', 'region')
                   .attr('fill', d=>colorScale(d.properties.ABS))
                   .on('click',function(d){
-                    if (d.properties.COD_REGI <= 1) {
-                      console.log(d.properties.ABS);
-                    }else
-                    {
-                      imprimir(d);
-                  }
+                    if (d.properties.COD_REGI == 1) {
+                      updateData(dataI());
+                    }
+                    if(d.properties.COD_REGI == 2){
+                      updateData(dataII());
+                    }
+                    if(d.properties.COD_REGI == 3){
+                      updateData(dataIII());
+                    }
+                    if(d.properties.COD_REGI == 4){
+                      updateData(dataIV());
+                    }
+                    if(d.properties.COD_REGI == 5){
+                      updateData(dataV());
+                    }
+                    if(d.properties.COD_REGI == 6){
+                      updateData(dataVI());
+                    }
+                    if(d.properties.COD_REGI == 7){
+                      updateData(dataVII());
+                    }
+                    if(d.properties.COD_REGI == 8){
+                      updateData(dataVIII());
+                    }
+                    if(d.properties.COD_REGI == 9){
+                      updateData(dataIX());
+                    }
+                    if(d.properties.COD_REGI == 10){
+                      updateData(dataX());
+                    }
+                    if(d.properties.COD_REGI == 11){
+                      updateData(dataXI());
+                    }
+                    if(d.properties.COD_REGI == 12){
+                      updateData(dataXII());
+                    }
+                    if(d.properties.COD_REGI == 13){
+                      updateData(dataRM());
+                    }
+                    if(d.properties.COD_REGI == 14){
+                      updateData(dataXIV());
+                    }
+                    if(d.properties.COD_REGI == 15){
+                      updateData(dataXV());
+                    }
                   
+                  
+                  
+                  
+
                   d3.select(this).classed('active','true');
                   });
 
