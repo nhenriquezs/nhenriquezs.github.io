@@ -95,18 +95,10 @@ var height = 530;
                       updateData(dataXV());
                     }
                   
-                  
-                  
-                  
-
                   d3.select(this).classed('active','true');
                   });
 
         svg.call(zoom);
-
-        function imprimir(d){
-          console.log(d.properties.COD_REGI);
-        }
 
         //funcion para manejar las imagenes de mapa de bits de fondo
         function zoomed() {
