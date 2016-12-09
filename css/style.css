@@ -11,13 +11,12 @@ body {
 	background: #f2f2f2; 
 	font-size: 1em;
 	line-height: 1.5em;
-	
 	padding-top: 80px;
 }
 
 h1 {
 	font-size: 2.3em;
-  line-height: 1.3em;
+	line-height: 1.3em;
 	margin: 15px 0;
 	text-align: center;
 	font-weight: 300;
@@ -127,7 +126,8 @@ nav {
 	#main-content .content {
 		padding: 30px;
 	}
-	
+
+
 #main-content2 {
 	background: white;
 	float: right;
@@ -138,11 +138,11 @@ nav {
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
 
-#mapa {
-	position: absolute;
-	right: 20%;
-	height: 100%;
-}
+	#main-content2 .content {
+		padding: 30px;
+	}
+
+
 	
 
 

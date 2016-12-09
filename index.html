@@ -2,174 +2,114 @@
 <html lang="en">
 	<head>
 	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	    <title>Visualizationssssss</title>
+
 	    <link rel="shortcut icon" type="img/image.png" href="favicon.png" />
 	    <link rel="stylesheet" href="css/style.css">
+	    <link rel="stylesheet" href="css/nvd3.css">
+
+
 	    <script type="text/javascript" src="js/d3v3.js"></script>
+	   	<script type="text/javascript" src="js/topojson.js"></script>
+		<script type="text/javascript" src="js/d3.geo.tile.js"></script>
+		<script type="text/javascript" src="js/nvd3.js"></script>
+    	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	</head>
 
 	<body>
-	<header id="main-header">
-	
-		<a id="logo-header" href="#">
-			<span class="site-name">Elecciones Municipales 2016</span>
-			<span class="site-desc">Visualización de Datos / Henríquez - Oyarzún </span>
-		</a> <!-- / #logo-header -->
+		<header id="main-header">
+		
+			<a id="logo-header" href="#">
+				<span class="site-name">Elecciones Municipales 2016</span>
+				<span class="site-desc">Visualización de Datos / Henríquez - Oyarzún </span>
+			</a> <!-- / #logo-header -->
 
-		<nav>
-			<ul>
-				<li><a href="#">Inicio</a></li>
-				<li><a href="#">Acerca de</a></li>
-				<li><a href="#">Contacto</a></li>
-			</ul>
-		</nav><!-- / nav -->
+			<nav>
+				<ul>
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#">Acerca de</a></li>
+					<li><a href="#">Contacto</a></li>
+				</ul>
+			</nav><!-- / nav -->
 
-	</header><!-- / #main-header -->
+		</header><!-- / #main-header -->
 
 
-	<section >
+		<section >
 
-		<div id="main-content">			
-			<img src="img/paisaje.jpg" alt="paisaje" />
-			
-			<div id="chart" class="content">
-				<p>Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización.Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. </p>
+			<div id="main-content" >
+				<img src="img/paisaje.jpg" alt="paisaje" />
+				<div id="welcome" class="content">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
 
-				<p>Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización.Acá va la explicación y bienvenida a la visualización. Acá va la explicación y bienvenida a la vsualización. </p>
-				<br>
-				<br>		
 
-				<h1>Tasa de abstención por región.</h1>
-				<h1>  </h1>
-				<label><input type="checkbox">Ordenar gráfico</label>
-						
+				<div id="donut">
+					<h1>Partidos políticos por región</h1>
+					<div id="option">
+					    <input name="updateButton" 
+					           type="button" 
+					           value="Update" 
+					           onclick="updateDataI()" />
+					</div>
+					<script type="text/javascript" src="js/donut.js"></script> 
+				    <svg id="chart2" height="300px" width="400px"></svg>
+				</div>					
+				
+				
+				<div id="chart" class="content">
+					<h1>Tasa de abstenciones por región</h1>
+					<label><input type="checkbox">Ordenar gráfico</label>
+					<h1> </h1>
 
-				<style>
-					.bar {
-					  fill: steelblue;
-					}
+					<style>
+						.bar {
+						  fill: steelblue;
+						}
 
-					.bar:hover {
-					  fill: brown;
-					}
+						.bar:hover {
+						  fill: brown;
+						}
+					</style>
+
+					<script type="text/javascript" src="js/chart.js"></script>
+	      			<svg></svg>
+				</div>
+			</div>
+
+
+			<div id="main-content2">
+				<div id="map"> 
+					<script type="text/javascript" src="js/map.js"></script>
+				</div>
+				<svg></svg>
+				
+				<style type="text/css">
+					#map{float:left; margin-right: 40px;}
+          			path{stroke:#444;stroke-width:0.5px;}
 				</style>
 
-				
-				
-				<script type="text/javascript">
-					var margin = {top: 30, right: 20, bottom: 40, left: 50},
-						width = 700 - margin.left - margin.right,
-						height = 400 - margin.top - margin.bottom;
 
-					var formatPercent = d3.format(".4");
+			</div>	<!-- / article -->
 
-					var x = d3.scale.ordinal()
-						.rangeRoundBands([0, width], .1, 1);
-
-					var y = d3.scale.linear()
-						.range([height, 0]);
-
-					var xAxis = d3.svg.axis()
-						.scale(x)
-						.orient("bottom");
-
-					var yAxis = d3.svg.axis()
-						.scale(y)
-						.orient("left")
-						.tickFormat(formatPercent);
-
-					var svg = d3.select("#chart").append("svg")
-						.attr("width", width + margin.left + margin.right)
-						.attr("height", height + margin.top + margin.bottom)
-						.append("g")
-						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-					d3.json("data/nac_abs.json", function(error, data) {
-						data.forEach(function(d) {
-						d.frequency = +d.frequency;
-					});
-
-					x.domain(data.map(function(d) { return d.Región; }));
-					y.domain([0, d3.max(data, function(d) { return d.Abs; })]);
-
-					svg.append("g")
-						.attr("class", "x axis")
-						.attr("transform", "translate(0," + height + ")")
-						.call(xAxis)
-						.append("text")
-						// .attr("transform", "rotate(-90)")
-						.attr("y", 6)
-						.attr("dy", "1.5em")
-						.style("text-anchor", "end")
-						.text("Región");
-
-					svg.append("g")
-						.attr("class", "y axis")
-						.call(yAxis)
-						.append("text")
-						.attr("transform", "rotate(-90)")
-						.attr("y", 6)
-						.attr("dy", ".71em")
-						.style("text-anchor", "end")
-						.text("Tasa de abstención");
-
-					svg.selectAll(".bar")
-						.data(data)
-						.enter().append("rect")
-						.attr("class", "bar")
-						.attr("x", function(d) { return x(d.Región); })
-						.attr("width", x.rangeBand())
-						.attr("y", function(d) { return y(d.Abs); })
-						.attr("height", function(d) { return height - y(d.Abs); });
-
-					d3.select("input").on("change", change);
-					var sortTimeout = setTimeout(function() {
-					d3.select("input").property("checked", false).each(change);
-					}, 2000);
-
-					function change() {
-						clearTimeout(sortTimeout);
-					    // Copy-on-write since tweens are evaluated after a delay.
-						var x0 = x.domain(data.sort(this.checked
-							? function(a, b) { return b.Abs - a.Abs; }
-							: function(a, b) { return d3.ascending(a.Región, b.Región); })
-							.map(function(d) { return d.Región; }))
-							.copy();
-
-					    svg.selectAll(".bar")
-					        .sort(function(a, b) { return x0(a.Región) - x0(b.Región); });
-
-					    var transition = svg.transition().duration(750),
-					        delay = function(d, i) { return i * 50; };
-
-					    transition.selectAll(".bar")
-					        .delay(delay)
-					        .attr("x", function(d) { return x0(d.Región); });
-					    transition.select(".x.axis")
-							.call(xAxis)
-							.selectAll("g")
-							.delay(delay);
-					  }
-					});
-      			</script>
-      			<svg ></svg>
-				
-	
-			</div>
-		</div>
+		</section><!-- / #main-content -->
 
 
-		<div id="main-content2">
-			<img id="mapa" src="img/mapa.jpg" alt="mapa"/>
-			
-		</div>	<!-- / article -->
-
-	</section><!-- / #main-content -->
-
-
-
-	<footer id="main-footer">
-		<p>&copy; 2016 <a href="http://giphy.com/search/dog-gif">Perritos!</a></p>
-	</footer><!-- / #main-footer -->
+		<footer id="main-footer">
+			<p>&copy; 2016 <a href="http://giphy.com/search/dog-gif">Perritos!</a></p>
+		</footer><!-- / #main-footer -->
 	</body>
 </html>  
