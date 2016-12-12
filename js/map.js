@@ -122,7 +122,7 @@ var height = 530;
             image.exit().remove();
 
             image.enter().append("image")
-                .attr("xlink:href", function(d) { return "http://" + ["a", "b", "c"][Math.random() * 3 | 0] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; })
+                .attr("xlink:href", function(d) { return "https://" + ["a", "b", "c"][Math.random() * 3 | 0] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; })
                 .attr("width", 1)
                 .attr("height", 1)
                 .attr("x", function(d) { return d[0]; })
