@@ -15,26 +15,27 @@ var height = 530;
         .projection(projection);
 
     //svg del mapa
-    var svg = d3.select('#map').append("svg")
+    var svg2 = d3.select('#map').append("svg")
         .attr("width", width)
         .attr("height", height);
 
-    var raster = svg.append("g"); //capa para los mapas de bits de fondo
+    var raster = svg2.append("g"); //capa para los mapas de bits de fondo
 
     d3.json('data/division_regional.json',function(err, data){
         if (err) console.log(err);
-
+        
 
         //Descomprimir el TopoJson a GeoJson
         var dataRegiones = topojson
         .feature(data, data.objects.division_regional).features;
+        console.log(dataRegiones);
 
         //usamos la población para una escala de color
         var colorScale = d3.scale.linear()
         .range(["#66b2ff","#004c99"])
-        .domain([d3.min(dataRegiones, d=>d.properties.ABS)
-          ,d3.max(dataRegiones, d=>d.properties.ABS)]);
-
+        .domain([d3.min(dataRegiones, function(d){ return d.properties.ABS})
+        ,d3.max(dataRegiones, function(d){ return d.properties.ABS})]);
+console.log(colorScale);
         //comportamineto del zoom
         var zoom = d3.behavior.zoom()
                     .scale(projection.scale() * 2 * Math.PI)
@@ -43,12 +44,13 @@ var height = 530;
                     .on("zoom", zoomed);
 
         //se generan los polígonos de cada region
-        var regiones = svg.selectAll('path.region')
+        var regiones = svg2.selectAll('path.region')
                   .data(dataRegiones)
                   .enter().append('path')
                   .attr('class', 'region')
                   .attr('fill', d=>colorScale(d.properties.ABS))
                   .on('click',function(d){
+                    console.log(d);
                     if (d.properties.COD_REGI == 1) {
                       updateData(dataI());
                     }
@@ -98,7 +100,7 @@ var height = 530;
                   d3.select(this).classed('active','true');
                   });
 
-        svg.call(zoom);
+        svg2.call(zoom);
 
         //funcion para manejar las imagenes de mapa de bits de fondo
         function zoomed() {
