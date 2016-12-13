@@ -9,7 +9,7 @@ var height = 530;
     var projection = d3.geo.mercator()
         .scale((1 << 12) / 2 / Math.PI)
         .translate([width / 2, height / 2]);
-    var center = projection([-75, -40]); //centro del mapa
+    var center = projection([-75, -25]); //centro del mapa
 
     var path = d3.geo.path()
         .projection(projection);
@@ -35,7 +35,8 @@ var height = 530;
         .range(["#66b2ff","#004c99"])
         .domain([d3.min(dataRegiones, function(d){ return d.properties.ABS})
         ,d3.max(dataRegiones, function(d){ return d.properties.ABS})]);
-console.log(colorScale);
+        console.log(colorScale);
+
         //comportamineto del zoom
         var zoom = d3.behavior.zoom()
                     .scale(projection.scale() * 2 * Math.PI)
