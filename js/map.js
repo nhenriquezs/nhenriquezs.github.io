@@ -32,10 +32,10 @@ var height = 530;
 
         //usamos la población para una escala de color
         var colorScale = d3.scale.linear()
-        .range(["#66b2ff","#004c99"])
-        .domain([d3.min(dataRegiones, function(d){ return d.properties.ABS})
-        ,d3.max(dataRegiones, function(d){ return d.properties.ABS})]);
-        console.log(colorScale);
+          .range(["#66b2ff","#004c99"])
+          .domain([d3.min(dataRegiones, function(d){ return d.properties.ABS})
+          ,d3.max(dataRegiones, function(d){ return d.properties.ABS})]);
+          console.log(colorScale);
 
         //comportamineto del zoom
         var zoom = d3.behavior.zoom()
@@ -52,6 +52,8 @@ var height = 530;
                   .attr('fill', d=>colorScale(d.properties.ABS))
                   .on('click',function(d){
                     console.log(d);
+                    d3.select("#titulo").html("Pactos políticos por región");
+
                     if (d.properties.COD_REGI == 1) {
                       updateData(dataI());
                     }
@@ -97,8 +99,10 @@ var height = 530;
                     if(d.properties.COD_REGI == 15){
                       updateData(dataXV());
                     }
-                  
+
+                  d3.select("#subtitulo").html(d.properties.NOM_REG).style("color", "#979a9a");
                   d3.select(this).classed('active','true');
+
                   });
 
         svg2.call(zoom);
@@ -135,3 +139,4 @@ var height = 530;
       zoomed();
 
     });
+

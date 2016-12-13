@@ -4,7 +4,7 @@
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	    <title>Visualizationssssss</title>
+	    <title>Visualización Elecciones Municipales</title>
 
 	    <link rel="shortcut icon" type="img/image.png" href="favicon.png" />
 	    <link rel="stylesheet" href="css/style.css">
@@ -23,14 +23,14 @@
 		
 			<a id="logo-header" href="#">
 				<span class="site-name">Elecciones Municipales 2016</span>
-				<span class="site-desc">Visualización de Datos / Henríquez - Oyarzún </span>
+				<span class="site-desc">Visualización de Datos</span>
 			</a> <!-- / #logo-header -->
 
 			<nav>
 				<ul>
-					<li><a href="#">Inicio</a></li>
-					<li><a href="#">Acerca de</a></li>
-					<li><a href="#">Contacto</a></li>
+					<li><a href="#main-content">Bienvenida</a></li>
+					<li><a href="#titulo">Pactos Políticos</a></li>
+					<li><a href="#chart">Abstenciones</a></li>
 				</ul>
 			</nav><!-- / nav -->
 
@@ -40,39 +40,35 @@
 		<section >
 
 			<div id="main-content" >
-				<img src="img/paisaje.jpg" alt="paisaje" />
+				<!--<img src="img/paisaje.jpg" alt="paisaje" />-->
 				<div id="welcome" class="content">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<h1>Bienvenidos/as a la visualización de <br> Elecciones Municipales 2016
+						<br>
+					</h1>
+
+					<h2>¿Qué es? Representación visual de los resultados por pacto político de las eleccíones y tasas de abstención obtenidas de servel.cl</h2>
+
+					<h2>¿Para qué? Mostrar información de datos duros en figuras que permitan facilitar su comprensión y análisis.</h2>
+
+					<h2>¿Para quién? Todo público interesado en ver este tipo de información y sacar sus conclusiones.</h2>
+
+					<h2> . . .</h2>
 				</div>
 
 
 				<div id="donut">
-					<h1>Pactos políticos por región</h1>
-					<!-- <div id="option">
-					    <input name="updateButton" 
-					           type="button" 
-					           value="Update" 
-					           onclick="updateDataI()" />
-					</div> --> 
+					<h1 id="titulo">Pactos políticos a nivel nacional</h1>
+					<h2 id="subtitulo"></h2>
+
 				    <svg id="chart2" height="280px" width="400px"></svg>
 				</div>					
 				
 				
 				<div id="chart" class="content">
+					<h2> . . .</h2>
 					<h1>Tasa de abstenciones por región</h1>
 					<label><input type="checkbox">Ordenar gráfico</label>
-					<h1> </h1>
+					<h1>     </h1>
 
 					<style>
 						.bar {
@@ -106,7 +102,7 @@
 
 
 		<footer id="main-footer">
-			<p>&copy; 2016 <a href="http://giphy.com/search/dog-gif">Perritos!</a></p>
+			<p>Nicole Henríquez - Robinson Oyarzún &copy; 2016 </p>
 		</footer><!-- / #main-footer -->
 	</body>
 </html>  
