@@ -88,6 +88,17 @@ img {
 		color: #999;
 	}
 	
+#title{
+	color: #5499c7;
+}
+
+#foto{
+	min-width: 50%;
+	margin-top: 5%;
+	margin-bottom: 10%;
+	margin-right: 5%;
+	margin-left: 13%;
+}
 
 /*
  * Navegación
@@ -136,6 +147,10 @@ nav {
 	#main-content header,
 	#main-content .content {
 		padding: 30px;
+	}
+	#main-content .list-group{
+		padding: 5px;
+		margin: 8%;
 	}
 
 

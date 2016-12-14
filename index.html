@@ -6,9 +6,10 @@
 
 	    <title>Visualización Elecciones Municipales</title>
 
-	    <link rel="shortcut icon" type="img/image.png" href="favicon.png" />
+	    <link rel="shortcut icon" href="img/favicon.png" />
 	    <link rel="stylesheet" href="css/style.css">
 	    <link rel="stylesheet" href="css/nvd3.css">
+	    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
 	    <script type="text/javascript" src="js/d3v3.js"></script>
@@ -16,6 +17,8 @@
 		<script type="text/javascript" src="js/d3.geo.tile.js"></script>
 		<script type="text/javascript" src="js/nvd3.js"></script>
 		<script type="text/javascript" src="js/d3.tip.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
 	</head>
 
 	<body>
@@ -42,17 +45,21 @@
 			<div id="main-content" >
 				<!--<img src="img/paisaje.jpg" alt="paisaje" />-->
 				<div id="welcome" class="content">
-					<h1>Bienvenidos/as a la visualización de <br> Elecciones Municipales 2016
+					<h1 id = "title">Bienvenidos/as a la visualización de <br> Elecciones Municipales 2016
 						<br>
 					</h1>
 
-					<h2>¿Qué es? Representación visual de los resultados por pacto político de las eleccíones y tasas de abstención obtenidas de servel.cl</h2>
-
-					<h2>¿Para qué? Mostrar información de datos duros en figuras que permitan facilitar su comprensión y análisis.</h2>
-
-					<h2>¿Para quién? Todo público interesado en ver este tipo de información y sacar sus conclusiones.</h2>
-
+					<img id = "foto" src="img/content.png" alt="content" />
 					<h2> . . .</h2>
+
+					<!--
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-success clearfix"><h4><strong>¿Qué es?</strong> <br> Representación visual de los resultados por pacto político de las eleccíones y tasas de abstención obtenidas de servel.cl</h4></li>
+						<li class="list-group-item list-group-item-info clearfix"><h4><strong>¿Para qué?</strong> <br> Mostrar información de datos duros en figuras que permitan facilitar su comprensión y análisis.</h4></li>
+						<li class="list-group-item list-group-item-warning clearfix"><h4><strong>¿Para quién?</strong> <br> Todo público interesado en ver este tipo de información y sacar sus conclusiones.</h4></li>
+					</ul>
+				-->
+
 				</div>
 
 
@@ -77,6 +84,19 @@
 
 						.bar:hover {
 						  fill: brown;
+						}
+						.axis path {
+						  fill: none;
+						}
+
+						.axis line {
+						  shape-rendering: crispEdges;
+						  stroke: #000;
+						}
+
+						.axis .minor line {
+						  stroke: #777;
+						  stroke-dasharray: 2,2;
 						}
 					</style>
 				</div>
